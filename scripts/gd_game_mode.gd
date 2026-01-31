@@ -5,6 +5,7 @@ extends Node
 @onready var wave_timer: Timer = $WaveTimer
 @onready var hud: Hud = $"../Hud"
 @onready var current_wave_lable: Label = $"../Hud/CurrentWaveLable"
+@onready var progress_bar: ProgressBar = $"../Hud/ProgressBar"
 
 @onready var player_character_sc = preload("res://scenes/sc_player_character.tscn")
 
@@ -40,6 +41,7 @@ func start_next_wave(stop_dialogue:bool):
 	wave_timer.start()
 		
 func _on_wave_timer_timeout() -> void:
+	progress_bar.value = progress_bar.value - 20
 	Dialogic.start("res://timelines/tm_dialogo1.dtl").process_mode = Node.PROCESS_MODE_ALWAYS
 	Dialogic.process_mode = Node.PROCESS_MODE_ALWAYS
 	Dialogic.timeline_ended.connect(start_next_wave.bind(true))
