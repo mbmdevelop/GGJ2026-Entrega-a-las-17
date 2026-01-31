@@ -1,19 +1,22 @@
 [gd_scene format=3 uid="uid://coc6ua7hd8kbt"]
 
 [ext_resource type="Script" uid="uid://ceoi57ewmyy2i" path="res://scripts/gd_grenade.gd" id="1_ro5si"]
-[ext_resource type="Texture2D" uid="uid://d3v8eynat77lb" path="res://icon.svg" id="1_xnyh4"]
+[ext_resource type="Texture2D" uid="uid://hcjp20p30cca" path="res://art/sprites/grenade.png" id="2_ro5si"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ro5si"]
-size = Vector2(150, 150)
+size = Vector2(50, 50)
 
 [node name="Grenade" type="Node2D" unique_id=275279243]
 script = ExtResource("1_ro5si")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=105663717]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_xnyh4")
+texture = ExtResource("2_ro5si")
 
 [node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=1462286992]
+collision_layer = 2
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=1996554090]
 shape = SubResource("RectangleShape2D_ro5si")
+
+[connection signal="body_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_body_entered"]
