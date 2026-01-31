@@ -7,8 +7,28 @@
 [ext_resource type="Script" uid="uid://blnfefkcsg6p2" path="res://scripts/gd_mask_button.gd" id="4_t1chd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxe3"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(0.66288584, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1chd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="ScGameScene" type="Node2D" unique_id=1235023744]
 
@@ -18,16 +38,21 @@ waves_times = Array[float]([2.0, 2.0, 2.0])
 
 [node name="WaveTimer" type="Timer" parent="GameMode" unique_id=2000740856]
 
-[node name="Hud" type="Control" parent="." unique_id=747635321]
+[node name="EnemySpawner" parent="." unique_id=273118067 instance=ExtResource("3_6yofh")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=484044214]
+follow_viewport_enabled = true
+
+[node name="Hud" type="Control" parent="CanvasLayer" unique_id=747635321]
 layout_mode = 3
-anchors_preset = 0
-offset_left = -1.0
-offset_top = 2.0
-offset_right = 1149.0
-offset_bottom = 640.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_257d6")
 
-[node name="CountDownLabel" type="Label" parent="Hud" unique_id=939059365]
+[node name="CountDownLabel" type="Label" parent="CanvasLayer/Hud" unique_id=939059365]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -37,12 +62,12 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 
-[node name="CurrentWaveLable" type="Label" parent="Hud" unique_id=1594583980]
+[node name="CurrentWaveLable" type="Label" parent="CanvasLayer/Hud" unique_id=1594583980]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="Mask1" type="TextureButton" parent="Hud" unique_id=677613697]
+[node name="Mask1" type="TextureButton" parent="CanvasLayer/Hud" unique_id=677613697]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -56,7 +81,7 @@ scale = Vector2(0.44330457, 0.44330457)
 texture_normal = ExtResource("3_xoxe3")
 script = ExtResource("4_t1chd")
 
-[node name="Mask2" type="TextureButton" parent="Hud" unique_id=671479748]
+[node name="Mask2" type="TextureButton" parent="CanvasLayer/Hud" unique_id=671479748]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -71,7 +96,7 @@ texture_normal = ExtResource("3_xoxe3")
 script = ExtResource("4_t1chd")
 mask_type = 1
 
-[node name="Mask3" type="TextureButton" parent="Hud" unique_id=767062227]
+[node name="Mask3" type="TextureButton" parent="CanvasLayer/Hud" unique_id=767062227]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -86,19 +111,18 @@ texture_normal = ExtResource("3_xoxe3")
 script = ExtResource("4_t1chd")
 mask_type = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="Hud" unique_id=1578502236]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Hud" unique_id=1578502236]
 layout_mode = 1
 offset_left = 87.0
 offset_top = 11.0
 offset_right = 523.0
 offset_bottom = 38.0
 theme_override_styles/background = SubResource("StyleBoxFlat_xoxe3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t1chd")
 value = 100.0
 show_percentage = false
 
-[node name="EnemySpawner" parent="." unique_id=273118067 instance=ExtResource("3_6yofh")]
-
 [connection signal="timeout" from="GameMode/WaveTimer" to="GameMode" method="_on_wave_timer_timeout"]
-[connection signal="pressed" from="Hud/Mask1" to="Hud/Mask1" method="_on_pressed"]
-[connection signal="pressed" from="Hud/Mask2" to="Hud/Mask2" method="_on_pressed"]
-[connection signal="pressed" from="Hud/Mask3" to="Hud/Mask3" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Hud/Mask1" to="CanvasLayer/Hud/Mask1" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Hud/Mask2" to="CanvasLayer/Hud/Mask2" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Hud/Mask3" to="CanvasLayer/Hud/Mask3" method="_on_pressed"]

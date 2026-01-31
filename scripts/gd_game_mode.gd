@@ -3,9 +3,10 @@ extends Node
 @export var waves_times:Array[float]
 
 @onready var wave_timer: Timer = $WaveTimer
-@onready var hud: Hud = $"../Hud"
-@onready var current_wave_lable: Label = $"../Hud/CurrentWaveLable"
-@onready var progress_bar: ProgressBar = $"../Hud/ProgressBar"
+@onready var hud: Hud = $"../CanvasLayer/Hud"
+
+@onready var current_wave_lable: Label = $"../CanvasLayer/Hud/CurrentWaveLable"
+@onready var progress_bar: ProgressBar = $"../CanvasLayer/Hud/ProgressBar"
 
 @onready var player_character_sc = preload("res://scenes/sc_player_character.tscn")
 
