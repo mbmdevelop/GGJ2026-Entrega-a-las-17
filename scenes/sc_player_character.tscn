@@ -1,47 +1,42 @@
 [gd_scene format=3 uid="uid://dlpxgnl6157x2"]
 
-[ext_resource type="Texture2D" uid="uid://bi4v4dvufw46a" path="res://art/placeholder/sprites/knight.png" id="1_4cneg"]
 [ext_resource type="Script" uid="uid://1bh08setqtjr" path="res://scripts/gd_player_character.gd" id="1_6xluo"]
+[ext_resource type="Texture2D" uid="uid://cja27d5omaubr" path="res://art/sprites/player_default.png" id="2_6xluo"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xluo"]
-atlas = ExtResource("1_4cneg")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qpnjs"]
-atlas = ExtResource("1_4cneg")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_y4cij"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6xluo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qpnjs")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_p646a"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xluo"]
+size = Vector2(9.999999, 53)
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=506079994]
-scale = Vector2(2.5, 2.5)
+collision_mask = 12
 script = ExtResource("1_6xluo")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=853378659]
-position = Vector2(0, -3)
-sprite_frames = SubResource("SpriteFrames_y4cij")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.38543284
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209891761]
+scale = Vector2(2, 2)
+texture = ExtResource("2_6xluo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=132996401]
-position = Vector2(0, 1.4210855e-14)
-shape = SubResource("CircleShape2D_p646a")
+[node name="EnemyHitArea" type="Area2D" parent="." unique_id=1070083619]
+scale = Vector2(0.99999994, 0.99999994)
+collision_mask = 8
 
-[node name="GrenadeSocket" type="Node2D" parent="." unique_id=1105455258]
-position = Vector2(50, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitArea" unique_id=132996401]
+position = Vector2(0, 1.4999999)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_6xluo")
+
+[node name="GrenadeSocketRight" type="Node2D" parent="." unique_id=1105455258]
+position = Vector2(100, 0)
+
+[node name="GrenadeSocketLeft" type="Node2D" parent="." unique_id=870895703]
+position = Vector2(-50, 0)
+
+[node name="GrenadeSocketUp" type="Node2D" parent="." unique_id=1537260458]
+position = Vector2(0, -50)
+
+[node name="GrenadeSocketDown" type="Node2D" parent="." unique_id=2035999624]
+position = Vector2(0, 50)
+
+[node name="SpawnGrenadeTimer" type="Timer" parent="." unique_id=903342626]
+one_shot = true
+
+[connection signal="body_entered" from="EnemyHitArea" to="." method="_on_enemy_hit_area_body_entered"]
+[connection signal="timeout" from="SpawnGrenadeTimer" to="." method="_on_spawn_grenade_timer_timeout"]

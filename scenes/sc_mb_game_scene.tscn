@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://vt75oyysaldd"]
 
 [ext_resource type="PackedScene" uid="uid://dlpxgnl6157x2" path="res://scenes/sc_player_character.tscn" id="1_eetsy"]
+[ext_resource type="PackedScene" uid="uid://d2nfduycoj25k" path="res://scenes/sc_enemy.tscn" id="2_asrje"]
 
 [node name="Root" type="Node2D" unique_id=988895055]
 
 [node name="PlayerCharacter" parent="." unique_id=506079994 instance=ExtResource("1_eetsy")]
 move_speed = 3.0
+
+[node name="ScEnemy" parent="." unique_id=117524385 instance=ExtResource("2_asrje")]
+position = Vector2(910, 218)
