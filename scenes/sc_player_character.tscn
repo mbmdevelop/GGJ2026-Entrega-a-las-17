@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dlpxgnl6157x2"]
+
+[ext_resource type="Texture2D" uid="uid://bi4v4dvufw46a" path="res://art/placeholder/sprites/knight.png" id="1_4cneg"]
+[ext_resource type="Script" uid="uid://1bh08setqtjr" path="res://scripts/gd_player_character.gd" id="1_6xluo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xluo"]
+atlas = ExtResource("1_4cneg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpnjs"]
+atlas = ExtResource("1_4cneg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y4cij"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xluo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpnjs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p646a"]
+radius = 6.0
+
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=506079994]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_6xluo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=853378659]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_y4cij")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.38543284
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=132996401]
+position = Vector2(0, 1.4210855e-14)
+shape = SubResource("CircleShape2D_p646a")
+
+[node name="GrenadeSocket" type="Node2D" parent="." unique_id=1105455258]
+position = Vector2(50, 0)

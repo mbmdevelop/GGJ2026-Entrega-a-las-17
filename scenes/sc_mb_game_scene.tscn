@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://vt75oyysaldd"]
+
+[ext_resource type="PackedScene" uid="uid://dlpxgnl6157x2" path="res://scenes/sc_player_character.tscn" id="1_eetsy"]
+
+[node name="Root" type="Node2D" unique_id=988895055]
+
+[node name="PlayerCharacter" parent="." unique_id=506079994 instance=ExtResource("1_eetsy")]
+move_speed = 3.0
