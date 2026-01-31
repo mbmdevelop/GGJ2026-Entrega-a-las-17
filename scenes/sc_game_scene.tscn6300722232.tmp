@@ -7,34 +7,20 @@
 
 [node name="GameMode" type="Node" parent="." unique_id=1258769651]
 script = ExtResource("1_rxb3t")
-waves_times = Array[float]([5.0, 15.0, 20.0])
+waves_times = Array[float]([60.0])
 
 [node name="WaveTimer" type="Timer" parent="GameMode" unique_id=2000740856]
 
 [node name="Hud" type="Control" parent="." unique_id=747635321]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -1.0
+offset_left = 577.0
 offset_top = 2.0
-offset_right = 1149.0
-offset_bottom = 640.0
+offset_right = 617.0
+offset_bottom = 42.0
 script = ExtResource("2_257d6")
 
 [node name="CountDownLabel" type="Label" parent="Hud" unique_id=939059365]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+layout_mode = 0
+offset_right = 40.0
 offset_bottom = 23.0
-grow_horizontal = 2
-
-[node name="CurrentWaveLable" type="Label" parent="Hud" unique_id=1594583980]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
-grow_horizontal = 0
