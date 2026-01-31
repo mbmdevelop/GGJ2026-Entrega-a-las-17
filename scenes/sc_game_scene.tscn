@@ -11,6 +11,8 @@ waves_times = Array[float]([5.0, 15.0, 20.0])
 
 [node name="WaveTimer" type="Timer" parent="GameMode" unique_id=2000740856]
 
+[node name="SpawnTimer" type="Timer" parent="GameMode" unique_id=936442930]
+
 [node name="Hud" type="Control" parent="." unique_id=747635321]
 layout_mode = 3
 anchors_preset = 0
@@ -38,3 +40,5 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
+
+[connection signal="timeout" from="GameMode/WaveTimer" to="GameMode" method="_on_wave_timer_timeout"]
