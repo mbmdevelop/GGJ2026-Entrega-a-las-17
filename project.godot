@@ -21,11 +21,25 @@ Dialogic="*uid://ds2q0uclmolvu"
 
 [dialogic]
 
-directories/dch_directory={}
+directories/dch_directory={
+"dios": "res://timelines/dios.dch",
+"id": "res://timelines/id.dch",
+"john_mascara": "res://timelines/john_mascara.dch"
+}
 directories/dtl_directory={
-"tm_dialogo1": "res://timelines/tm_dialogo1.dtl"
+"tm_oleada0": "res://timelines/tm_oleada0.dtl",
+"tm_oleada2": "res://timelines/tm_oleada1.dtl",
+"tm_oleada3": "res://timelines/tm_oleada2.dtl",
+"tm_oleada4": "res://timelines/tm_oleada3.dtl",
+"tm_oleada5": "res://timelines/tm_oleada4.dtl",
+"tm_outro": "res://timelines/tm_outro.dtl"
 }
 layout/style_directory={}
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 
 [editor_plugins]
 
@@ -47,6 +61,13 @@ left_click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(184, 15),"global_position":Vector2(196, 75),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Grenade"
+2d_physics/layer_3="GrenadeExplosion"
+2d_physics/layer_4="Enemy"
 
 [physics]
 

@@ -2,10 +2,14 @@
 
 [ext_resource type="Script" uid="uid://brivlkvofkpn7" path="res://scripts/gd_spawner.gd" id="1_82lfg"]
 [ext_resource type="PackedScene" uid="uid://d2nfduycoj25k" path="res://scenes/sc_enemy.tscn" id="2_yc0h6"]
+[ext_resource type="Texture2D" uid="uid://bav7ynownn1dt" path="res://art/sprites/enemy_default.png" id="3_u3tgy"]
+[ext_resource type="Texture2D" uid="uid://blarwd6xwyoox" path="res://art/sprites/enemy_orange.png" id="4_qymgy"]
+[ext_resource type="Texture2D" uid="uid://cncq6da31f1fu" path="res://art/sprites/enemy_purple.png" id="5_pk41w"]
 
 [node name="Spawner" type="Node2D" unique_id=273118067]
 script = ExtResource("1_82lfg")
 enemy_scene = ExtResource("2_yc0h6")
+enemy_textures = Array[Texture2D]([ExtResource("3_u3tgy"), ExtResource("4_qymgy"), ExtResource("5_pk41w")])
 
 [node name="enemy_timer" type="Timer" parent="." unique_id=1385798784]
 wait_time = 2.0

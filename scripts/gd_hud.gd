@@ -11,7 +11,7 @@ func set_countdowntime(new_time: float):
 	count_down_label.set_text(time_string)
 
 func set_currentwave(num_wave: int):
-	var wave_string: String = "Wave: %d" % [num_wave+1]
+	var wave_string: String = "Wave: %d" % [num_wave]
 	current_wave_lable.set_text(wave_string)
 
 func _ready() -> void:
