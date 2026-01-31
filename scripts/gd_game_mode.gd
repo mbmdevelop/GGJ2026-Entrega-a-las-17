@@ -3,19 +3,29 @@ extends Node
 @export var waves_times:Array[float]
 
 @onready var wave_timer: Timer = $WaveTimer
-@onready var spawn_timer: Timer = $SpawnTimer
 @onready var hud: Hud = $"../Hud"
 @onready var current_wave_lable: Label = $"../Hud/CurrentWaveLable"
 
-var current_wave_num:int = 0
+@onready var player_character_sc = preload("res://scenes/sc_player_character.tscn")
 
+var current_wave_num:int = 0
+var player_character:CharacterBody2D = null
+
+func spawn_player_character():
+	player_character = player_character_sc.instantiate() as CharacterBody2D
+	player_character.reparent(get_tree().get_root())
+	var screen_middle_point: Vector2 = get_viewport().size * 0.5
+	player_character.global_position = screen_middle_point
+	
 func _ready() -> void:
+	spawn_player_character()
+	
 	wave_timer.wait_time = waves_times[current_wave_num]
 	wave_timer.set_one_shot(true)
 	wave_timer.start()
 
 func _process(_delta: float) -> void:
-	print(wave_timer.time_left)
+	#print(wave_timer.time_left)
 	hud.set_countdowntime(wave_timer.time_left)
 	hud.set_currentwave(current_wave_num)
 
