@@ -9,6 +9,25 @@ size = Vector2(50, 50)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ro5si"]
 radius = 159.0786
 
+[sub_resource type="Gradient" id="Gradient_ro5si"]
+offsets = PackedFloat32Array(0, 0.0017241379, 1)
+colors = PackedColorArray(1.0660068, 0.7203039, 0.060849875, 1, 0.9096543, 0.8532876, 0.18314952, 1, 1.113, 0.092, 0.188, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ljoif"]
+gradient = SubResource("Gradient_ro5si")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wu7hj"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 700.0
+gravity = Vector3(0, 0, 0)
+damping_min = 28.000002
+damping_max = 28.000002
+scale_min = 3.0
+scale_max = 15.0
+color_ramp = SubResource("GradientTexture1D_ljoif")
+
 [node name="Grenade" type="Node2D" unique_id=275279243]
 script = ExtResource("1_ro5si")
 
@@ -30,5 +49,14 @@ collision_mask = 8
 [node name="ExplosionCollisionShape" type="CollisionShape2D" parent="ExplosionArea" unique_id=199728552]
 shape = SubResource("CircleShape2D_ro5si")
 debug_color = Color(0.99215686, 0, 0, 0.41960785)
+
+[node name="explosion" type="GPUParticles2D" parent="ExplosionArea" unique_id=741462734]
+scale = Vector2(0.6, 0.6)
+emitting = false
+amount = 400
+lifetime = 0.34
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_wu7hj")
 
 [connection signal="body_entered" from="MouseArea" to="." method="_on_area_2d_body_entered"]

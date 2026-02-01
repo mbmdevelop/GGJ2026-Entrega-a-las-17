@@ -5,6 +5,7 @@ signal destroy_signal
 
 @onready var mouse_collision_shape:CollisionShape2D = $MouseArea/MouseCollisionShape
 @onready var explosion_area:Area2D = $ExplosionArea
+@onready var explosion: GPUParticles2D = $ExplosionArea/explosion
 
 var is_attached_to_mouse:bool = false
 var last_frame_position:Vector2 = Vector2.ZERO
@@ -52,4 +53,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	for enemy in enemies:
 		enemy.queue_free()
 		
+	explosion.emitting = true
+	explosion.reparent(get_tree().root)
 	destroy_signal.emit()
