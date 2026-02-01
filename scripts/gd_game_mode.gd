@@ -10,10 +10,12 @@ var current_wave_num:int = 0
 @onready var hud: Hud = $"../CanvasLayer/Hud"
 @onready var progress_bar: ProgressBar = $"../CanvasLayer/Hud/ProgressBar"
 @onready var boss_name: Label = $"../CanvasLayer/Hud/BossName"
+@onready var heart_1: TextureRect = $"../CanvasLayer/Hud/Heart1"
+@onready var heart_2: TextureRect = $"../CanvasLayer/Hud/Heart2"
+@onready var heart_3: TextureRect = $"../CanvasLayer/Hud/Heart3"
 
 #Misc
 @onready var player_character:PlayerCharacter = $"../PlayerCharacter"
-@export var main_menu_scene:PackedScene
 @onready var enemy_spawner: EnemySpawner = $"../EnemySpawner"
 
 func init_player_character():
@@ -68,7 +70,7 @@ func _on_wave_timer_timeout() -> void:
 	start_next_dialogue()
 
 func return_to_main_menu():
-	get_tree().change_scene_to_packed(main_menu_scene)
+	get_tree().change_scene_to_file("res://scenes/sc_main_menu.tscn")
 
 func _on_mask_clicked(mask_type: int) -> void:
 	match mask_type:
@@ -76,3 +78,11 @@ func _on_mask_clicked(mask_type: int) -> void:
 			enemy_spawner.change_all_enemies_vul()
 		1:
 			enemy_spawner.change_all_enemies_speed()
+
+
+func _on_player_character_player_hit(hp: int) -> void:
+	match hp:
+		2:
+			heart_3.visible = false
+		1:
+			heart_2.visible = false

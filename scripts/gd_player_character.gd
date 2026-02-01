@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name PlayerCharacter
 
 signal player_die_signal
+signal player_hit_signal(hp:int)
 
 @export_group("Params")
 @export var move_speed:float = 10.0
@@ -67,5 +68,6 @@ func _on_enemy_hit_area_body_entered(body: Node2D) -> void:
 	body.queue_free()
 	
 	hp -= 1
+	player_hit_signal.emit(hp)
 	if hp <=0:
 		player_die_signal.emit()
