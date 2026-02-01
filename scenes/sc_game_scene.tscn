@@ -10,7 +10,6 @@
 [ext_resource type="Theme" uid="uid://ctri7mw5e5v30" path="res://themes/boss_name.tres" id="6_6b3ul"]
 [ext_resource type="Texture2D" uid="uid://b37p5b6c820cw" path="res://art/sprites/mask_blue_dread.png" id="6_7avmb"]
 [ext_resource type="PackedScene" uid="uid://dlpxgnl6157x2" path="res://scenes/sc_player_character.tscn" id="6_t1chd"]
-[ext_resource type="PackedScene" uid="uid://duliv12o1f3rc" path="res://scenes/sc_main_menu.tscn" id="7_7avmb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxe3"]
 bg_color = Color(0, 0, 0, 1)
@@ -154,7 +153,6 @@ text = "Boss Name"
 [node name="GameMode" type="Node" parent="." unique_id=1258769651]
 script = ExtResource("1_rxb3t")
 waves_times = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0])
-main_menu_scene = ExtResource("7_7avmb")
 
 [node name="WaveTimer" type="Timer" parent="GameMode" unique_id=2000740856]
 

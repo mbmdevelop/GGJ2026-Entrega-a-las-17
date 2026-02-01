@@ -13,7 +13,6 @@ var current_wave_num:int = 0
 
 #Misc
 @onready var player_character:PlayerCharacter = $"../PlayerCharacter"
-@export var main_menu_scene:PackedScene
 
 func init_player_character():
 	var screen_middle_point: Vector2 = get_viewport().size * 0.5
@@ -67,4 +66,4 @@ func _on_wave_timer_timeout() -> void:
 	start_next_dialogue()
 
 func return_to_main_menu():
-	get_tree().change_scene_to_packed(main_menu_scene)
+	get_tree().change_scene_to_file("res://scenes/sc_main_menu.tscn")
