@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://c0k7sp0o20exs"]
 
 [ext_resource type="Script" uid="uid://dh8pwjfxtd7nn" path="res://scripts/gd_game_mode.gd" id="1_rxb3t"]
+[ext_resource type="Theme" uid="uid://lio3q4mwr6vp" path="res://themes/hud_labels.tres" id="2_8t4oq"]
 [ext_resource type="Script" uid="uid://bq4nj75bm2cx2" path="res://scripts/gd_hud.gd" id="2_257d6"]
 [ext_resource type="PackedScene" uid="uid://dajx2u7qtnu6a" path="res://scenes/sc_spawner.tscn" id="3_6yofh"]
 [ext_resource type="Texture2D" uid="uid://d3v8eynat77lb" path="res://icon.svg" id="3_xoxe3"]
 [ext_resource type="Texture2D" uid="uid://dwq2i0eue1yx5" path="res://art/sprites/mask_yellow_fear.png" id="4_5p5lu"]
 [ext_resource type="Script" uid="uid://blnfefkcsg6p2" path="res://scripts/gd_mask_button.gd" id="4_t1chd"]
+[ext_resource type="Theme" uid="uid://ctri7mw5e5v30" path="res://themes/boss_name.tres" id="6_6b3ul"]
 [ext_resource type="Texture2D" uid="uid://b37p5b6c820cw" path="res://art/sprites/mask_blue_dread.png" id="6_7avmb"]
 [ext_resource type="PackedScene" uid="uid://dlpxgnl6157x2" path="res://scenes/sc_player_character.tscn" id="6_t1chd"]
 [ext_resource type="PackedScene" uid="uid://duliv12o1f3rc" path="res://scenes/sc_main_menu.tscn" id="7_7avmb"]
@@ -54,24 +56,33 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -20.0
+offset_top = 44.0
 offset_right = 20.0
-offset_bottom = 23.0
+offset_bottom = 79.0
 grow_horizontal = 2
+theme = ExtResource("2_8t4oq")
 
 [node name="CurrentWaveLable" type="Label" parent="CanvasLayer/Hud" unique_id=1594583980]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 23.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 7.0
+offset_right = 20.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme = ExtResource("2_8t4oq")
 
 [node name="Mask1" type="TextureButton" parent="CanvasLayer/Hud" unique_id=677613697]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -229.0
+offset_left = -295.99994
 offset_top = 12.0
-offset_right = -101.0
-offset_bottom = 140.0
+offset_right = -116.0
+offset_bottom = 192.0
 grow_horizontal = 0
 scale = Vector2(0.44330457, 0.44330457)
 texture_normal = ExtResource("4_5p5lu")
@@ -83,10 +94,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -151.0
+offset_left = -194.99988
 offset_top = 12.0
-offset_right = -23.0
-offset_bottom = 140.0
+offset_right = -14.999756
+offset_bottom = 192.0
 grow_horizontal = 0
 scale = Vector2(0.44330457, 0.44330457)
 texture_normal = ExtResource("6_7avmb")
@@ -99,26 +110,46 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -71.0
+offset_left = -94.0
 offset_top = 12.0
-offset_right = 57.0
-offset_bottom = 140.0
+offset_right = 86.0
+offset_bottom = 192.0
 grow_horizontal = 0
 scale = Vector2(0.44330457, 0.44330457)
 texture_normal = ExtResource("3_xoxe3")
+stretch_mode = 0
 script = ExtResource("4_t1chd")
 mask_type = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Hud" unique_id=1578502236]
 layout_mode = 1
-offset_left = 87.0
-offset_top = 11.0
-offset_right = 523.0
-offset_bottom = 38.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -26.0
+offset_right = -21.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_styles/background = SubResource("StyleBoxFlat_xoxe3")
 theme_override_styles/fill = SubResource("StyleBoxFlat_t1chd")
 value = 100.0
 show_percentage = false
+
+[node name="BossName" type="Label" parent="CanvasLayer/Hud" unique_id=363259925]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = -78.0
+offset_right = 215.0
+offset_bottom = -29.0
+grow_vertical = 0
+theme = ExtResource("6_6b3ul")
+text = "Boss Name"
 
 [node name="GameMode" type="Node" parent="." unique_id=1258769651]
 script = ExtResource("1_rxb3t")

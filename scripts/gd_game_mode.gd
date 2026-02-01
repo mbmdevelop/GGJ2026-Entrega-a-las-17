@@ -9,6 +9,7 @@ var current_wave_num:int = 0
 #UI
 @onready var hud: Hud = $"../CanvasLayer/Hud"
 @onready var progress_bar: ProgressBar = $"../CanvasLayer/Hud/ProgressBar"
+@onready var boss_name: Label = $"../CanvasLayer/Hud/BossName"
 
 #Misc
 @onready var player_character:PlayerCharacter = $"../PlayerCharacter"
@@ -19,10 +20,14 @@ func init_player_character():
 	player_character.global_position = screen_middle_point
 	
 	player_character.player_die_signal.connect(return_to_main_menu)
+
+func init_hud():
+	progress_bar.visible = false
+	boss_name.visible = false
 	
 func _ready() -> void:
 	init_player_character()
-	
+	init_hud()
 	start_next_dialogue()
 
 func _process(_delta: float) -> void:
@@ -32,6 +37,10 @@ func start_next_wave(stop_dialogue:bool):
 	if stop_dialogue:
 		get_tree().set('paused', false)
 	
+	if current_wave_num == 0:
+		progress_bar.visible = true
+		boss_name.visible = true
+		
 	if current_wave_num == waves_times.size():
 		return_to_main_menu()
 		return
