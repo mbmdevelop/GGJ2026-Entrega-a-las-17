@@ -16,7 +16,7 @@ texture = ExtResource("2_6xluo")
 
 [node name="EnemyHitArea" type="Area2D" parent="." unique_id=1070083619]
 scale = Vector2(0.99999994, 0.99999994)
-collision_mask = 8
+collision_mask = 24
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitArea" unique_id=132996401]
 position = Vector2(0, 1.4999999)

@@ -14,6 +14,7 @@ var current_wave_num:int = 0
 #Misc
 @onready var player_character:PlayerCharacter = $"../PlayerCharacter"
 @export var main_menu_scene:PackedScene
+@onready var enemy_spawner: EnemySpawner = $"../EnemySpawner"
 
 func init_player_character():
 	var screen_middle_point: Vector2 = get_viewport().size * 0.5
@@ -68,3 +69,10 @@ func _on_wave_timer_timeout() -> void:
 
 func return_to_main_menu():
 	get_tree().change_scene_to_packed(main_menu_scene)
+
+func _on_mask_clicked(mask_type: int) -> void:
+	match mask_type:
+		0:
+			enemy_spawner.change_all_enemies_vul()
+		1:
+			enemy_spawner.change_all_enemies_speed()
