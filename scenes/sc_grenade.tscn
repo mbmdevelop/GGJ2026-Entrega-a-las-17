@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ceoi57ewmyy2i" path="res://scripts/gd_grenade.gd" id="1_ro5si"]
 [ext_resource type="Texture2D" uid="uid://hcjp20p30cca" path="res://art/sprites/grenade.png" id="2_ro5si"]
+[ext_resource type="AudioStream" uid="uid://c1m307rs8tdny" path="res://audio/sounds/1023 EXPLOSION.wav" id="3_ljoif"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ro5si"]
 size = Vector2(50, 50)
@@ -58,5 +59,10 @@ lifetime = 0.34
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_wu7hj")
+
+[node name="AudioStreamSFX" type="AudioStreamPlayer2D" parent="." unique_id=1083834283]
+stream = ExtResource("3_ljoif")
+volume_db = 2.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="MouseArea" to="." method="_on_area_2d_body_entered"]
