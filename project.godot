@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GGJ2026"
-run/main_scene="uid://duliv12o1f3rc"
+run/main_scene="uid://c0k7sp0o20exs"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -54,11 +54,6 @@ choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
@@ -86,6 +81,7 @@ left_click={
 2d_physics/layer_2="Grenade"
 2d_physics/layer_3="GrenadeExplosion"
 2d_physics/layer_4="Enemy"
+2d_physics/layer_5="EnemyInvul"
 
 [physics]
 
