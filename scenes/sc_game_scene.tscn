@@ -150,6 +150,33 @@ grow_vertical = 0
 theme = ExtResource("6_6b3ul")
 text = "Boss Name"
 
+[node name="Health1" type="TextureRect" parent="CanvasLayer/Hud" unique_id=1305255718]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 144.0
+offset_bottom = 137.0
+scale = Vector2(0.4687055, 0.4687055)
+texture = ExtResource("3_xoxe3")
+
+[node name="Health2" type="TextureRect" parent="CanvasLayer/Hud" unique_id=164012465]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 9.0
+offset_right = 215.0
+offset_bottom = 137.0
+scale = Vector2(0.4687055, 0.4687055)
+texture = ExtResource("3_xoxe3")
+
+[node name="Health3" type="TextureRect" parent="CanvasLayer/Hud" unique_id=1745196566]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 9.0
+offset_right = 284.0
+offset_bottom = 137.0
+scale = Vector2(0.4687055, 0.4687055)
+texture = ExtResource("3_xoxe3")
+
 [node name="GameMode" type="Node" parent="." unique_id=1258769651]
 script = ExtResource("1_rxb3t")
 waves_times = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0])
@@ -160,7 +187,10 @@ waves_times = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0])
 
 [node name="PlayerCharacter" parent="." unique_id=506079994 instance=ExtResource("6_t1chd")]
 
+[connection signal="mask_clicked_signal" from="CanvasLayer/Hud/Mask1" to="GameMode" method="_on_mask_clicked"]
 [connection signal="pressed" from="CanvasLayer/Hud/Mask1" to="CanvasLayer/Hud/Mask1" method="_on_pressed"]
+[connection signal="mask_clicked_signal" from="CanvasLayer/Hud/Mask2" to="GameMode" method="_on_mask_clicked"]
 [connection signal="pressed" from="CanvasLayer/Hud/Mask2" to="CanvasLayer/Hud/Mask2" method="_on_pressed"]
+[connection signal="mask_clicked_signal" from="CanvasLayer/Hud/Mask3" to="GameMode" method="_on_mask_clicked"]
 [connection signal="pressed" from="CanvasLayer/Hud/Mask3" to="CanvasLayer/Hud/Mask3" method="_on_pressed"]
 [connection signal="timeout" from="GameMode/WaveTimer" to="GameMode" method="_on_wave_timer_timeout"]
