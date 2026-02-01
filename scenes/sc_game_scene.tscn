@@ -148,7 +148,7 @@ offset_right = 215.0
 offset_bottom = -29.0
 grow_vertical = 0
 theme = ExtResource("6_6b3ul")
-text = "Boss Name"
+text = "Máscara de la Esperanza"
 
 [node name="Heart1" type="TextureRect" parent="CanvasLayer/Hud" unique_id=1305255718]
 layout_mode = 0
@@ -183,6 +183,10 @@ waves_times = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0])
 
 [node name="WaveTimer" type="Timer" parent="GameMode" unique_id=2000740856]
 
+[node name="MaskColdownTimer" type="Timer" parent="GameMode" unique_id=1060406493]
+wait_time = 3.0
+one_shot = true
+
 [node name="EnemySpawner" parent="." unique_id=273118067 instance=ExtResource("3_6yofh")]
 
 [node name="PlayerCharacter" parent="." unique_id=506079994 instance=ExtResource("6_t1chd")]
@@ -194,4 +198,5 @@ waves_times = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0])
 [connection signal="mask_clicked_signal" from="CanvasLayer/Hud/Mask3" to="GameMode" method="_on_mask_clicked"]
 [connection signal="pressed" from="CanvasLayer/Hud/Mask3" to="CanvasLayer/Hud/Mask3" method="_on_pressed"]
 [connection signal="timeout" from="GameMode/WaveTimer" to="GameMode" method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="GameMode/MaskColdownTimer" to="GameMode" method="_on_mask_coldown_timer_timeout"]
 [connection signal="player_hit_signal" from="PlayerCharacter" to="GameMode" method="_on_player_character_player_hit"]

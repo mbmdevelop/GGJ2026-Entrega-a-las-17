@@ -13,15 +13,15 @@ func _ready():
 	if is_invul:
 		set_invul(true)
 
-func init(in_player_character:CharacterBody2D, in_texture:Texture2D, in_move_speed:float):
+func init(in_player_character:CharacterBody2D, in_texture:Texture2D, in_move_speed:float, can_be_invul:bool):
 	player_character = in_player_character
 	texture = in_texture
 	move_speed = in_move_speed
 	
 	var invul_rand_array:Array[int] = [0,1,2]
 	var invul_rand_result = invul_rand_array.pick_random()
-	#if invul_rand_result == 1:
-	is_invul = true
+	if invul_rand_result == 1 && can_be_invul:
+		is_invul = true
 
 func _physics_process(_delta: float) -> void:
 	if player_character:

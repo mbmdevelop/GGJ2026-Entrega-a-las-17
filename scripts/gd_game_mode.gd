@@ -17,6 +17,11 @@ var current_wave_num:int = 0
 #Misc
 @onready var player_character:PlayerCharacter = $"../PlayerCharacter"
 @onready var enemy_spawner: EnemySpawner = $"../EnemySpawner"
+@onready var mask_coldown_timer: Timer = $MaskColdownTimer
+
+var mask_coldown_timer_time:float = 3.0
+var can_use_masks:bool = true
+var prev_mask_type:int = 0
 
 func init_player_character():
 	var screen_middle_point: Vector2 = get_viewport().size * 0.5
@@ -73,12 +78,22 @@ func return_to_main_menu():
 	get_tree().change_scene_to_file("res://scenes/sc_main_menu.tscn")
 
 func _on_mask_clicked(mask_type: int) -> void:
+	if !can_use_masks:
+		return
+	
+	prev_mask_type = mask_type
+	
+	can_use_masks=false
+	
+	hud.set_masks_darkened_enabled(true)
+	
 	match mask_type:
 		0:
-			enemy_spawner.change_all_enemies_vul()
+			enemy_spawner.change_all_enemies_vul(false)
 		1:
-			enemy_spawner.change_all_enemies_speed()
-
+			enemy_spawner.change_all_enemies_speed(1.0)
+	
+	mask_coldown_timer.start()
 
 func _on_player_character_player_hit(hp: int) -> void:
 	match hp:
@@ -86,3 +101,9 @@ func _on_player_character_player_hit(hp: int) -> void:
 			heart_3.visible = false
 		1:
 			heart_2.visible = false
+
+
+func _on_mask_coldown_timer_timeout() -> void:
+	enemy_spawner.restore_enemies(prev_mask_type)
+	hud.set_masks_darkened_enabled(false)
+	can_use_masks = true
