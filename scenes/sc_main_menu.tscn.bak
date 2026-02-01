@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cfhlqmxtcugl5" path="res://scripts/gd_play.gd" id="1_owbj7"]
 [ext_resource type="Theme" uid="uid://xw8vdmppowy2" path="res://themes/main_menu_button.tres" id="1_pqt2p"]
 [ext_resource type="StyleBox" uid="uid://dqex23h61dvbn" path="res://themes/normal_button.tres" id="2_3yjn2"]
+[ext_resource type="PackedScene" uid="uid://c0k7sp0o20exs" path="res://scenes/sc_game_scene.tscn" id="2_pnboa"]
 [ext_resource type="StyleBox" uid="uid://dauyu6vo3iomc" path="res://themes/pressed_button.tres" id="3_hw1lq"]
 [ext_resource type="StyleBox" uid="uid://jritqcnf65na" path="res://themes/hover_button.tres" id="4_oqmls"]
 [ext_resource type="StyleBox" uid="uid://r775sj15dwoo" path="res://themes/focus_button.tres" id="5_csg8l"]
@@ -50,6 +51,7 @@ theme_override_styles/hover = ExtResource("4_oqmls")
 theme_override_styles/focus = ExtResource("5_csg8l")
 text = " Jugar "
 script = ExtResource("1_owbj7")
+game_scene = ExtResource("2_pnboa")
 
 [node name="Exit" type="Button" parent="VBoxContainer" unique_id=2089878933]
 layout_mode = 2
