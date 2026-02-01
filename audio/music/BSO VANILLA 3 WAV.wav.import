@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://q3scjs24tsps"
+path="res://.godot/imported/BSO VANILLA 3 WAV.wav-f490271133d79e7b8c411990206f8349.sample"
+
+[deps]
+
+source_file="res://audio/music/BSO VANILLA 3 WAV.wav"
+dest_files=["res://.godot/imported/BSO VANILLA 3 WAV.wav-f490271133d79e7b8c411990206f8349.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://312lgsrcjsb6"
+path="res://.godot/imported/1121 enemigo2.wav-cd9f57d86042c4fda87fd62b5bf2ab90.sample"
+
+[deps]
+
+source_file="res://audio/sounds/1121 enemigo2.wav"
+dest_files=["res://.godot/imported/1121 enemigo2.wav-cd9f57d86042c4fda87fd62b5bf2ab90.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

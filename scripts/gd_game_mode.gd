@@ -6,6 +6,14 @@ extends Node
 @onready var current_wave_lable: Label = $"../CanvasLayer/Hud/CurrentWaveLable"
 var current_wave_num:int = 0
 
+#Audio
+@onready var bso_base: AudioStreamPlayer2D = $"../BSOBase"
+@onready var audio_stream_masks: AudioStreamPlayer2D = $"../AudioStreamMasks"
+@export var audio_stream_mask_1: AudioStream = null
+@export var audio_stream_mask_2: AudioStream = null
+@export var audio_stream_mask_3: AudioStream = null
+var bso_base_position:float = 0 
+
 #UI
 @onready var hud: Hud = $"../CanvasLayer/Hud"
 @onready var progress_bar: ProgressBar = $"../CanvasLayer/Hud/ProgressBar"
@@ -87,11 +95,24 @@ func _on_mask_clicked(mask_type: int) -> void:
 	
 	hud.set_masks_darkened_enabled(true)
 	
+	player_character.change_sprite(mask_type)
+	var mask_stream = null
 	match mask_type:
 		0:
 			enemy_spawner.change_all_enemies_vul(false)
+			mask_stream = audio_stream_mask_1
 		1:
 			enemy_spawner.change_all_enemies_speed(1.0)
+			mask_stream = audio_stream_mask_2
+		2:
+			player_character.change_spawn_grenade_timer_time(0.5)
+			mask_stream = audio_stream_mask_3
+	
+	bso_base_position = bso_base.get_playback_position()
+	bso_base.stop()
+	
+	audio_stream_masks.stream = mask_stream
+	audio_stream_masks.play()
 	
 	mask_coldown_timer.start()
 
@@ -104,6 +125,12 @@ func _on_player_character_player_hit(hp: int) -> void:
 
 
 func _on_mask_coldown_timer_timeout() -> void:
-	enemy_spawner.restore_enemies(prev_mask_type)
+	if prev_mask_type == 2:
+		player_character.change_spawn_grenade_timer_time(player_character.spawn_grenade_time)
+	else:
+		enemy_spawner.restore_enemies(prev_mask_type)
 	hud.set_masks_darkened_enabled(false)
+	player_character.change_sprite(3)
+	audio_stream_masks.stop()
+	bso_base.play(bso_base_position)
 	can_use_masks = true

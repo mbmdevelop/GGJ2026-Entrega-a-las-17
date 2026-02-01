@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vb3x81ydmlq"
+path="res://.godot/imported/1987 recarga.wav-9d42585a2905cd8ff59a1ef46b28166e.sample"
+
+[deps]
+
+source_file="res://audio/sounds/1987 recarga.wav"
+dest_files=["res://.godot/imported/1987 recarga.wav-9d42585a2905cd8ff59a1ef46b28166e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
