@@ -1,9 +1,13 @@
 extends CharacterBody2D
+class_name PlayerCharacter
+
+signal player_die_signal
 
 @export_group("Params")
 @export var move_speed:float = 10.0
 @export var target_dist_threshold:float = 5.0
 @export var spawn_grenade_time:float = 1.0
+@export var hp:int = 3
 
 @onready var grenade_socket:Node2D = $GrenadeSocketRight
 @onready var grenade_sc = preload("res://scenes/sc_grenade.tscn")
@@ -61,3 +65,7 @@ func _on_spawn_grenade_timer_timeout() -> void:
 
 func _on_enemy_hit_area_body_entered(body: Node2D) -> void:
 	body.queue_free()
+	
+	hp -= 1
+	if hp <=0:
+		player_die_signal.emit()

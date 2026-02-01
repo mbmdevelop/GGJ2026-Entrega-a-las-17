@@ -11,15 +11,17 @@ var current_wave_num:int = 0
 @onready var progress_bar: ProgressBar = $"../CanvasLayer/Hud/ProgressBar"
 
 #Misc
-@onready var player_character: CharacterBody2D = $"../PlayerCharacter"
-@export var main_menu_scene: PackedScene
+@onready var player_character:PlayerCharacter = $"../PlayerCharacter"
+@export var main_menu_scene:PackedScene
 
-func set_player_character_initial_position():
+func init_player_character():
 	var screen_middle_point: Vector2 = get_viewport().size * 0.5
 	player_character.global_position = screen_middle_point
 	
+	player_character.player_die_signal.connect(return_to_main_menu)
+	
 func _ready() -> void:
-	set_player_character_initial_position()
+	init_player_character()
 	
 	start_next_dialogue()
 
