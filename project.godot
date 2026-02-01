@@ -38,7 +38,12 @@ directories/dtl_directory={
 "tm_oleada5": "res://timelines/tm_oleada4.dtl",
 "tm_outro": "res://timelines/tm_outro.dtl"
 }
-layout/style_directory={}
+layout/style_directory={
+"": "res://styles/newst_style_dios.tres",
+"newst_style_dios": "res://styles/newst_style_dios.tres",
+"newst_style_id": "res://styles/newst_style_id.tres",
+"newst_style_john": "res://styles/newst_style_john.tres"
+}
 extensions_folder="res://addons/dialogic_additions"
 text/letter_speed=0.01
 text/initial_text_reveal_skippable=true
@@ -57,6 +62,25 @@ choices/reveal_delay=0
 choices/reveal_by_input=false
 save/autosave_delay=60.0
 save/encryption_on_exports_only=true
+glossary/default_case_sensitive=true
+layout/style_list=["res://styles/newst_style_dios.tres", "res://styles/newst_style_id.tres", "res://styles/newst_style_john.tres"]
+layout/default_style="res://styles/newst_style_dios.tres"
+variables={}
+text/autopauses={}
+audio/channel_defaults={
+"": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": false,
+"volume": 0.0
+},
+"music": {
+"audio_bus": "",
+"fade_length": 0.0,
+"loop": true,
+"volume": 0.0
+}
+}
 
 [editor_plugins]
 
