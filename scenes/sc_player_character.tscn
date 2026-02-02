@@ -38,5 +38,10 @@ position = Vector2(0, 50)
 [node name="SpawnGrenadeTimer" type="Timer" parent="." unique_id=903342626]
 one_shot = true
 
+[node name="ExplodeGrenadeTimer" type="Timer" parent="." unique_id=1227864298]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="EnemyHitArea" to="." method="_on_enemy_hit_area_body_entered"]
 [connection signal="timeout" from="SpawnGrenadeTimer" to="." method="_on_spawn_grenade_timer_timeout"]
+[connection signal="timeout" from="ExplodeGrenadeTimer" to="." method="_on_explode_grenade_timer_timeout"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://duliv12o1f3rc"]
 
 [ext_resource type="Script" uid="uid://dmscirimwlqpn" path="res://scripts/gd_exit.gd" id="1_bh3ql"]
-[ext_resource type="Texture2D" uid="uid://d3v8eynat77lb" path="res://icon.svg" id="1_hw1lq"]
+[ext_resource type="Texture2D" uid="uid://dj073vqarjr8q" path="res://art/sprites/menu.png" id="1_oqmls"]
 [ext_resource type="Script" uid="uid://cfhlqmxtcugl5" path="res://scripts/gd_play.gd" id="1_owbj7"]
 [ext_resource type="Theme" uid="uid://xw8vdmppowy2" path="res://themes/main_menu_button.tres" id="1_pqt2p"]
 [ext_resource type="StyleBox" uid="uid://dqex23h61dvbn" path="res://themes/normal_button.tres" id="2_3yjn2"]
@@ -24,9 +24,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -384.0
+offset_top = -216.0
+offset_right = 384.0
+offset_bottom = 216.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_hw1lq")
+texture = ExtResource("1_oqmls")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1916106720]
 layout_mode = 1

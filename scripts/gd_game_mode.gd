@@ -13,6 +13,7 @@ var current_wave_num:int = 0
 @export var audio_stream_mask_2: AudioStream = null
 @export var audio_stream_mask_3: AudioStream = null
 var bso_base_position:float = 0 
+@onready var audio_stream_hit: AudioStreamPlayer2D = $"../AudioStreamHit"
 
 #UI
 @onready var hud: Hud = $"../CanvasLayer/Hud"
@@ -66,6 +67,13 @@ func start_next_wave(stop_dialogue:bool):
 	wave_timer.set_one_shot(true)
 	wave_timer.start()
 	
+	enemy_spawner.enemy_timer.stop()
+	enemy_spawner.enemy_timer.wait_time -= 0.25
+	enemy_spawner.enemy_timer.start()
+	
+	enemy_spawner.enemies_speed = enemy_spawner.enemies_speed * 1.25
+	enemy_spawner.change_all_enemies_speed(enemy_spawner.enemies_speed)
+	
 	current_wave_num += 1
 
 func start_next_dialogue():
@@ -117,12 +125,12 @@ func _on_mask_clicked(mask_type: int) -> void:
 	mask_coldown_timer.start()
 
 func _on_player_character_player_hit(hp: int) -> void:
+	audio_stream_hit.play()
 	match hp:
 		2:
 			heart_3.visible = false
 		1:
 			heart_2.visible = false
-
 
 func _on_mask_coldown_timer_timeout() -> void:
 	if prev_mask_type == 2:

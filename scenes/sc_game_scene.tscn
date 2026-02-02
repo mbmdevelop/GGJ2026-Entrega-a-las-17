@@ -4,16 +4,23 @@
 [ext_resource type="Theme" uid="uid://lio3q4mwr6vp" path="res://themes/hud_labels.tres" id="2_8t4oq"]
 [ext_resource type="Script" uid="uid://bq4nj75bm2cx2" path="res://scripts/gd_hud.gd" id="2_257d6"]
 [ext_resource type="PackedScene" uid="uid://dajx2u7qtnu6a" path="res://scenes/sc_spawner.tscn" id="3_6yofh"]
-[ext_resource type="Texture2D" uid="uid://d3v8eynat77lb" path="res://icon.svg" id="3_xoxe3"]
+[ext_resource type="Texture2D" uid="uid://cuvfc2og3f2ci" path="res://art/sprites/background.png" id="3_csx88"]
 [ext_resource type="Texture2D" uid="uid://dwq2i0eue1yx5" path="res://art/sprites/mask_yellow_fear.png" id="4_5p5lu"]
 [ext_resource type="Script" uid="uid://blnfefkcsg6p2" path="res://scripts/gd_mask_button.gd" id="4_t1chd"]
 [ext_resource type="Theme" uid="uid://ctri7mw5e5v30" path="res://themes/boss_name.tres" id="6_6b3ul"]
 [ext_resource type="Texture2D" uid="uid://b37p5b6c820cw" path="res://art/sprites/mask_blue_dread.png" id="6_7avmb"]
 [ext_resource type="PackedScene" uid="uid://dlpxgnl6157x2" path="res://scenes/sc_player_character.tscn" id="6_t1chd"]
+[ext_resource type="Texture2D" uid="uid://dhm0yadrb03to" path="res://art/sprites/mask_red_wrath.png" id="7_5s7ni"]
+[ext_resource type="Texture2D" uid="uid://3bh7tcjoakdf" path="res://art/sprites/sprite_heart.png" id="9_5s7ni"]
 [ext_resource type="AudioStream" uid="uid://cdmkrpd58efnm" path="res://audio/music/mascara del miedo WAV.wav" id="10_ey43b"]
 [ext_resource type="AudioStream" uid="uid://7stm5x1e2745" path="res://audio/music/BSO VANILLA WAV.wav" id="11_8t4oq"]
 [ext_resource type="AudioStream" uid="uid://bxbpeo4dxf2lo" path="res://audio/music/mascara fatalidad WAV.wav" id="11_ove12"]
 [ext_resource type="AudioStream" uid="uid://bl7jpflbelenb" path="res://audio/music/mascara de la ira 2.wav" id="12_4kxa2"]
+[ext_resource type="Texture2D" uid="uid://voh2ptfdecaj" path="res://art/sprites/player_yellow_fear.png" id="16_nsa8o"]
+[ext_resource type="Texture2D" uid="uid://664yyn3w5i5l" path="res://art/sprites/player_blue_dread.png" id="17_csx88"]
+[ext_resource type="Texture2D" uid="uid://d1cwc7vgekhfj" path="res://art/sprites/player_red_wrath.png" id="18_5s223"]
+[ext_resource type="Texture2D" uid="uid://cja27d5omaubr" path="res://art/sprites/player_default.png" id="19_jyjkd"]
+[ext_resource type="AudioStream" uid="uid://1gs7abikrytt" path="res://audio/sounds/1409 DAñO PROTAGONISTA 2.wav" id="20_nsa8o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xoxe3"]
 bg_color = Color(0, 0, 0, 1)
@@ -123,7 +130,7 @@ offset_right = 86.0
 offset_bottom = 192.0
 grow_horizontal = 0
 scale = Vector2(0.44330457, 0.44330457)
-texture_normal = ExtResource("3_xoxe3")
+texture_normal = ExtResource("7_5s7ni")
 stretch_mode = 0
 script = ExtResource("4_t1chd")
 mask_type = 2
@@ -165,7 +172,7 @@ offset_top = 9.0
 offset_right = 144.0
 offset_bottom = 137.0
 scale = Vector2(0.4687055, 0.4687055)
-texture = ExtResource("3_xoxe3")
+texture = ExtResource("9_5s7ni")
 
 [node name="Heart2" type="TextureRect" parent="CanvasLayer/Hud" unique_id=164012465]
 layout_mode = 0
@@ -174,7 +181,7 @@ offset_top = 9.0
 offset_right = 215.0
 offset_bottom = 137.0
 scale = Vector2(0.4687055, 0.4687055)
-texture = ExtResource("3_xoxe3")
+texture = ExtResource("9_5s7ni")
 
 [node name="Heart3" type="TextureRect" parent="CanvasLayer/Hud" unique_id=1745196566]
 layout_mode = 0
@@ -183,11 +190,11 @@ offset_top = 9.0
 offset_right = 284.0
 offset_bottom = 137.0
 scale = Vector2(0.4687055, 0.4687055)
-texture = ExtResource("3_xoxe3")
+texture = ExtResource("9_5s7ni")
 
 [node name="GameMode" type="Node" parent="." unique_id=1258769651]
 script = ExtResource("1_rxb3t")
-waves_times = Array[float]([20.0, 20.0, 20.0, 20.0, 20.0])
+waves_times = Array[float]([20.0, 30.0, 40.0, 50.0, 60.0])
 audio_stream_mask_1 = ExtResource("10_ey43b")
 audio_stream_mask_2 = ExtResource("11_ove12")
 audio_stream_mask_3 = ExtResource("12_4kxa2")
@@ -199,10 +206,27 @@ wait_time = 3.0
 one_shot = true
 
 [node name="EnemySpawner" parent="." unique_id=273118067 instance=ExtResource("3_6yofh")]
+enemies_speed = 4.0
 
 [node name="PlayerCharacter" parent="." unique_id=506079994 instance=ExtResource("6_t1chd")]
+z_index = 1
+spawn_grenade_time = 1.5
+mask_1_text = ExtResource("16_nsa8o")
+mask_2_text = ExtResource("17_csx88")
+mask_3_text = ExtResource("18_5s223")
+mask_default_text = ExtResource("19_jyjkd")
 
 [node name="AudioStreamMasks" type="AudioStreamPlayer2D" parent="." unique_id=1701278273]
+
+[node name="AudioStreamHit" type="AudioStreamPlayer2D" parent="." unique_id=230811269]
+stream = ExtResource("20_nsa8o")
+volume_db = 2.5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1300448986]
+modulate = Color(0.5971758, 0.5971763, 0.5971758, 1)
+z_index = -1
+texture = ExtResource("3_csx88")
+centered = false
 
 [connection signal="mask_clicked_signal" from="CanvasLayer/Hud/Mask1" to="GameMode" method="_on_mask_clicked"]
 [connection signal="pressed" from="CanvasLayer/Hud/Mask1" to="CanvasLayer/Hud/Mask1" method="_on_pressed"]

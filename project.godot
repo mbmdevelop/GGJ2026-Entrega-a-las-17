@@ -82,6 +82,10 @@ audio/channel_defaults={
 }
 }
 
+[display]
+
+window/size/mode=2
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogic/plugin.cfg")
